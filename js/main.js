@@ -30,12 +30,20 @@ function userRender(userArr, element) {
       user.address.suite +
       ", " +
       user.address.zipcode;
-    userTemplate.querySelector(".user-name").textContent = user.name;
-    userTemplate.querySelector(".user-name").textContent = user.name;
-    userTemplate.querySelector(".user-name").textContent = user.name;
-    userTemplate.querySelector(".user-name").textContent = user.name;
-    userTemplate.querySelector(".user-name").textContent = user.name;
-    userTemplate.querySelector(".user-name").textContent = user.name;
+    userTemplate.querySelector(".user-adress-link").href =
+      "https://www.google.com/maps/place/" +
+      user.address.geo.lat +
+      "," +
+      user.address.geo.lng;
+
+    userTemplate.querySelector(".user-phone").textContent = user.phone;
+    userTemplate.querySelector(".user-website").textContent = user.website;
+    userTemplate.querySelector(".user-company-name").textContent =
+      user.company.name;
+    userTemplate.querySelector(".user-company-phrase").textContent =
+      user.company.catchPhrase;
+    userTemplate.querySelector(".user-company-bs").textContent =
+      user.company.bs;
 
     userFragment.appendChild(userTemplate);
   });
