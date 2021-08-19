@@ -1,0 +1,12 @@
+.card-list {
+  @include reset-list;
+  padding: 20px;
+}
+
+.list-style {
+  @include reset-list;
+}
+
+.item-stye {
+  @include reset-list;
+}
