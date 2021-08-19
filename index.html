@@ -14,54 +14,61 @@
         <ul class="card-list d-flex justify-content-between">
           <li class="card-item">
             <h2>Users</h2>
-            <ul class="user-list list-style">
-              <li class="user-item item-stye">
-                <h3 class="user-name">John Doe</h3>
-                <p class="user-id">1</p>
-                <p class="user-nickname">Johnic</p>
-                <p class="user-email">asasas@.mail.ru</p>
-                <p class="user-address">Buxoro Vobkent</p>
-                <a
-                  class="user-adress-link"
-                  target="__blank"
-                  href="https://www.google.com/maps/place/-37.3159,81.1496"
-                  >Location</a
-                >
-                <p class="user-phone">998902992468</p>
-                <p class="user-website">www.asaadasd.com</p>
-                <p class="user-company-name">Google</p>
-                <p class="user-company-phrase">to help people</p>
-                <p class="user-company-bs">salom salom</p>
-              </li>
-            </ul>
+            <ul class="user-list list-style"></ul>
           </li>
 
           <li class="card-item">
             <h2>Posts</h2>
-            <ul class="posts-list list-style">
-              <li class="posts-item item-stye">
-                <h3 class="posts-title">Title</h3>
-                <p class="posts-body">Salom salom</p>
-              </li>
-            </ul>
+            <ul class="posts-list list-style"></ul>
           </li>
 
           <li class="card-item">
             <h2>Comments</h2>
-            <ul class="comments-list list-style">
-              <li class="comments-item item-stye">
-                <h3 class="comments-name">title</h3>
-                <p class="comments-email">asasas.com</p>
-                <p class="comments-body">Lorem, ipsum dolor.</p>
-              </li>
-            </ul>
+            <ul class="comments-list list-style"></ul>
           </li>
         </ul>
       </div>
     </div>
 
-    <template> <li class="user-item"></li> </template>
+    <!-- user template -->
+    <template class="user-template">
+      <li class="user-item item-stye btn btn-danger">
+        <h3 class="user-name">John Doe</h3>
+        <p class="user-id">1</p>
+        <p class="user-nickname">Johnic</p>
+        <p class="user-email">asasas@.mail.ru</p>
+        <p class="user-address">Buxoro Vobkent</p>
+        <a
+          class="user-adress-link"
+          target="__blank"
+          href="https://www.google.com/maps/place/-37.3159,81.1496"
+          >Location</a
+        >
+        <p class="user-phone">998902992468</p>
+        <p class="user-website">www.asaadasd.com</p>
+        <p class="user-company-name">Google</p>
+        <p class="user-company-phrase">to help people</p>
+        <p class="user-company-bs">salom salom</p>
+      </li>
+    </template>
 
-    <script src="./main.js"></script>
+    <!-- post template -->
+    <template class="posts-template">
+      <li class="posts-item item-stye">
+        <h3 class="posts-title">Title</h3>
+        <p class="posts-body">Salom salom</p>
+      </li>
+    </template>
+
+    <!-- commit template -->
+    <template class="commits-template">
+      <li class="comments-item item-stye">
+        <h3 class="comments-name">title</h3>
+        <p class="comments-email">asasas.com</p>
+        <p class="comments-body">Lorem, ipsum dolor.</p>
+      </li>
+    </template>
+
+    <script src="./js/main.js"></script>
   </body>
 </html>
