@@ -1,17 +1,21 @@
 const elUserList = document.querySelector(".user-list");
-const elUserTemplate = document.querySelector(".user-template").content;
+const elPostList = document.querySelector(".post-list");
 
+const elUserTemplate = document.querySelector(".user-template").content;
+const elPostTemplate = document.querySelector(".post-template").content;
+
+// fetch users
 async function fetchUserArr() {
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
 
   const data = await response.json();
 
-  console.log(data);
   userRender(data, elUserList);
 }
 
 fetchUserArr();
 
+// render users
 function userRender(userArr, element) {
   element.innerHTML = null;
   const userFragment = document.createDocumentFragment();
@@ -49,4 +53,33 @@ function userRender(userArr, element) {
   });
 
   element.appendChild(userFragment);
+}
+
+// fetch posts
+async function fetchPostArr() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+
+  const data = await response.json();
+
+  renderPosts(data, elPostList);
+  console.log(data);
+}
+
+fetchPostArr();
+
+// render posts
+
+function renderPosts(postArr, element) {
+  element.innerHTML = null;
+  const postFragment = document.createDocumentFragment();
+
+  postArr.forEach((post) => {
+    const postTemplate = elPostTemplate.cloneNode(true);
+    postTemplate.querySelector(".post-title").textContent = post.title;
+    postTemplate.querySelector(".post-body").textContent = post.body;
+
+    postFragment.appendChild(postTemplate);
+  });
+
+  element.appendChild(postFragment);
 }
