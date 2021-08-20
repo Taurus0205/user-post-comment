@@ -1,8 +1,10 @@
 const elUserList = document.querySelector(".user-list");
 const elPostList = document.querySelector(".post-list");
+const elCommentList = document.querySelector(".comment-list");
 
 const elUserTemplate = document.querySelector(".user-template").content;
 const elPostTemplate = document.querySelector(".post-template").content;
+const elCommentTemplate = document.querySelector(".comment-template").content;
 
 // fetch users
 async function fetchUserArr() {
@@ -49,6 +51,8 @@ function userRender(userArr, element) {
     userTemplate.querySelector(".user-company-bs").textContent =
       user.company.bs;
 
+    userTemplate.querySelector(".user-post-btn").dataset.userId = user.id;
+
     userFragment.appendChild(userTemplate);
   });
 
@@ -61,20 +65,32 @@ async function fetchPostArr() {
 
   const data = await response.json();
 
-  renderPosts(data, elPostList);
+  elUserList.addEventListener("click", (evt) => {
+    if (evt.target.matches(".user-post-btn")) {
+      const userId = evt.target.dataset.userId;
+      let foundPost = [];
+      data.forEach((row) => {
+        if (row.userId == userId) {
+          foundPost.push(row);
+        }
+      });
+      renderPosts(foundPost, elPostList);
+    }
+  });
+
   console.log(data);
 }
 
 fetchPostArr();
 
 // render posts
-
 function renderPosts(postArr, element) {
   element.innerHTML = null;
   const postFragment = document.createDocumentFragment();
 
   postArr.forEach((post) => {
     const postTemplate = elPostTemplate.cloneNode(true);
+    postTemplate.querySelector(".post-Id").textContent = post.id;
     postTemplate.querySelector(".post-title").textContent = post.title;
     postTemplate.querySelector(".post-body").textContent = post.body;
 
@@ -82,4 +98,23 @@ function renderPosts(postArr, element) {
   });
 
   element.appendChild(postFragment);
+}
+
+// render comments
+function renderComments(commentArr, element) {
+  element.innerHTML = null;
+  const commentFragment = document.createDocumentFragment();
+
+  commentArr.forEach((comment) => {
+    const commentTemplate = elCommentTemplate.cloneNode(true);
+    commentTemplate.querySelector(".comments-Id").textContent = comments.id;
+    commentTemplate.querySelector(".comments-name").textContent = comments.name;
+    commentTemplate.querySelector(".comments-email").textContent =
+      comments.email;
+    commentTemplate.querySelector(".comments-body").textContent = comments.body;
+
+    commentFragment.appendChild(commentTemplate);
+  });
+
+  element.appendChild(commentFragment);
 }
