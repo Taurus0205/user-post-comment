@@ -77,8 +77,6 @@ async function fetchPostArr() {
       renderPosts(foundPost, elPostList);
     }
   });
-
-  console.log(data);
 }
 
 fetchPostArr();
@@ -94,11 +92,33 @@ function renderPosts(postArr, element) {
     postTemplate.querySelector(".post-title").textContent = post.title;
     postTemplate.querySelector(".post-body").textContent = post.body;
 
+    postTemplate.querySelector(".post-comment-btn").dataset.postId = post.id;
+
     postFragment.appendChild(postTemplate);
   });
 
   element.appendChild(postFragment);
 }
+
+// fetch comments
+let commentId = "1";
+async function fetchComments() {
+  const response = await fetch(
+    "https://jsonplaceholder.typicode.com/posts/" + commentId + "/comments"
+  );
+
+  const data = await response.json();
+
+  elPostList.addEventListener("click", (evt) => {
+    if (evt.target.matches(".post-comment-btn")) {
+      commentId = evt.target.dataset.postId;
+      fetchComments();
+    }
+    renderComments(data, elCommentList);
+  });
+}
+
+fetchComments();
 
 // render comments
 function renderComments(commentArr, element) {
@@ -107,11 +127,11 @@ function renderComments(commentArr, element) {
 
   commentArr.forEach((comment) => {
     const commentTemplate = elCommentTemplate.cloneNode(true);
-    commentTemplate.querySelector(".comments-Id").textContent = comments.id;
-    commentTemplate.querySelector(".comments-name").textContent = comments.name;
+    commentTemplate.querySelector(".comments-Id").textContent = comment.id;
+    commentTemplate.querySelector(".comments-name").textContent = comment.name;
     commentTemplate.querySelector(".comments-email").textContent =
-      comments.email;
-    commentTemplate.querySelector(".comments-body").textContent = comments.body;
+      comment.email;
+    commentTemplate.querySelector(".comments-body").textContent = comment.body;
 
     commentFragment.appendChild(commentTemplate);
   });
