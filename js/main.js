@@ -84,6 +84,7 @@ fetchPostArr();
 // render posts
 function renderPosts(postArr, element) {
   element.innerHTML = null;
+  elCommentList.innerHTML = null;
   const postFragment = document.createDocumentFragment();
 
   postArr.forEach((post) => {
@@ -100,21 +101,44 @@ function renderPosts(postArr, element) {
   element.appendChild(postFragment);
 }
 
+// fetch comments (this code runs very slow, why?)
+// let commentId = "1";
+// async function fetchComments() {
+//   const response = await fetch(
+//     "https://jsonplaceholder.typicode.com/posts/" + commentId + "/comments"
+//   );
+
+//   const data = await response.json();
+
+//   elPostList.addEventListener("click", (evt) => {
+//     if (evt.target.matches(".post-comment-btn")) {
+//       commentId = evt.target.dataset.postId;
+//       fetchComments();
+//     }
+//     renderComments(data, elCommentList);
+//   });
+// }
+
+// fetchComments();
+
 // fetch comments
-let commentId = "1";
 async function fetchComments() {
-  const response = await fetch(
-    "https://jsonplaceholder.typicode.com/posts/" + commentId + "/comments"
-  );
+  const response = await fetch("https://jsonplaceholder.typicode.com/comments");
 
   const data = await response.json();
+  console.log(data);
 
   elPostList.addEventListener("click", (evt) => {
     if (evt.target.matches(".post-comment-btn")) {
       commentId = evt.target.dataset.postId;
-      fetchComments();
+      let foundComment = [];
+      data.forEach((row) => {
+        if (row.postId == commentId) {
+          foundComment.push(row);
+        }
+      });
+      renderComments(foundComment, elCommentList);
     }
-    renderComments(data, elCommentList);
   });
 }
 
@@ -131,6 +155,7 @@ function renderComments(commentArr, element) {
     commentTemplate.querySelector(".comments-name").textContent = comment.name;
     commentTemplate.querySelector(".comments-email").textContent =
       comment.email;
+    commentTemplate.querySelector(".comments-email").href = comment.email;
     commentTemplate.querySelector(".comments-body").textContent = comment.body;
 
     commentFragment.appendChild(commentTemplate);

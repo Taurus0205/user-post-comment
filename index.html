@@ -12,18 +12,18 @@
     <div class="container">
       <div class="card">
         <ul class="card-list d-flex justify-content-between">
-          <li class="card-item">
-            <h2>Users</h2>
+          <li class="card-item col-4">
+            <h2 class="text-center">Users</h2>
             <ul class="user-list list-style"></ul>
           </li>
 
-          <li class="card-item">
-            <h2>Posts</h2>
+          <li class="card-item col-4">
+            <h2 class="text-center">Posts</h2>
             <ul class="post-list list-style"></ul>
           </li>
 
-          <li class="card-item">
-            <h2>Comments</h2>
+          <li class="card-item col-4">
+            <h2 class="text-center">Comments</h2>
             <ul class="comment-list list-style"></ul>
           </li>
         </ul>
@@ -32,44 +32,82 @@
 
     <!-- user template -->
     <template class="user-template">
-      <li class="user-item item-stye btn btn-danger">
-        <p class="user-id m-0">1</p>
-        <h3 class="user-name m-0">John Doe</h3>
-        <p class="user-nickname m-0">Johnic</p>
-        <p class="user-email m-0">asasas@.mail.ru</p>
-        <p class="user-address m-0">Buxoro Vobkent</p>
-        <a
-          class="user-adress-link m-0"
-          target="__blank"
-          href="https://www.google.com/maps/place/-37.3159,81.1496"
-          >Location</a
-        >
-        <p class="user-phone m-0">998902992468</p>
-        <p class="user-website m-0">www.asaadasd.com</p>
-        <p class="user-company-name m-0">Google</p>
-        <p class="user-company-phrase m-0">to help people</p>
-        <p class="user-company-bs m-0">salom salom</p>
-        <button class="user-post-btn">Show posts</button>
+      <li class="user-item item-stye border border-2">
+        <p class="user-id m-0 fw-bold text-center">1</p>
+        <p class="m-0">
+          <span class="fw-bold">Name: </span
+          ><span class="user-name">John Doe</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Nickname: </span
+          ><span class="user-nickname">Johnic</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">E-mail: </span
+          ><span class="user-email">asasas@.mail.ru</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Address: </span
+          ><span class="user-address">Buxoro Vobkent</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Phone: </span
+          ><span class="user-phone">998902992468</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Website: </span
+          ><span class="user-website">www.asaadasd.com</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Company: </span
+          ><span class="user-company-name">Google</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Company phrase: </span
+          ><span class="user-company-phrase">to help people</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Company bs: </span
+          ><span class="user-company-bs">to help people</span>
+        </p>
+        <p class="m-0">
+          <span class="fw-bold">Location: </span
+          ><a
+            class="user-adress-link"
+            target="__blank"
+            href="https://www.google.com/maps/place/-37.3159,81.1496"
+            ><img
+              class="mb-2"
+              src="./images/placeholder.png"
+              alt="icon of placeholder"
+              width="30"
+              height="30"
+          /></a>
+        </p>
+
+        <button class="user-post-btn btn btn-info">Show posts</button>
       </li>
     </template>
 
     <!-- post template -->
     <template class="post-template">
-      <li class="post-item item-stye btn btn-light">
-        <p class="post-Id">1</p>
-        <h3 class="post-title">Title</h3>
+      <li class="post-item item-stye border border-2">
+        <p class="post-Id m-0 fw-bold text-center">1</p>
+        <h3 class="post-title h4 m-0 fw-bold text-center">Title</h3>
         <p class="post-body">Salom salom</p>
-        <button class="post-comment-btn">Show comments</button>
+        <button class="post-comment-btn btn btn-info">Show comments</button>
       </li>
     </template>
 
     <!-- comment template -->
     <template class="comment-template">
-      <li class="comments-item item-stye">
-        <p class="comments-Id">1</p>
-        <h3 class="comments-name">title</h3>
-        <p class="comments-email">asasas.com</p>
+      <li class="comments-item item-stye border border-2">
+        <p class="comments-Id m-0 fw-bold text-center">1</p>
+        <h3 class="comments-name h4 m-0 fw-bold text-center">title</h3>
         <p class="comments-body">Lorem, ipsum dolor.</p>
+        <a class="comments-email" target="_blank" href="aasdasd.com"
+          >dasdasd.com</a
+        >
       </li>
     </template>
 
