@@ -28,6 +28,7 @@ function userRender(userArr, element) {
     userTemplate.querySelector(".user-id").textContent = user.id;
     userTemplate.querySelector(".user-nickname").textContent = user.username;
     userTemplate.querySelector(".user-email").textContent = user.email;
+    userTemplate.querySelector(".user-email").href = user.email;
     userTemplate.querySelector(".user-address").textContent =
       user.address.city +
       ", " +
@@ -44,6 +45,7 @@ function userRender(userArr, element) {
 
     userTemplate.querySelector(".user-phone").textContent = user.phone;
     userTemplate.querySelector(".user-website").textContent = user.website;
+    userTemplate.querySelector(".user-website").href = user.website;
     userTemplate.querySelector(".user-company-name").textContent =
       user.company.name;
     userTemplate.querySelector(".user-company-phrase").textContent =
