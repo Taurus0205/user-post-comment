@@ -8,6 +8,8 @@ const elCommentTemplate = document.querySelector(".comment-template").content;
 
 // fetch users
 async function fetchUserArr() {
+  elUserList.innerHTML = "<img src='./images/spinner.svg' alt='Spinner' />";
+
   const response = await fetch("https://jsonplaceholder.typicode.com/users");
 
   const data = await response.json();
@@ -63,6 +65,8 @@ function userRender(userArr, element) {
 
 // fetch posts
 async function fetchPostArr() {
+  // elPostList.innerHTML = "<img src='./images/spinner.svg' alt='Spinner' />";
+
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
 
   const data = await response.json();
@@ -125,10 +129,11 @@ function renderPosts(postArr, element) {
 
 // fetch comments
 async function fetchComments() {
+  // elCommentList.innerHTML = "<img src='./images/spinner.svg' alt='Spinner' />";
+
   const response = await fetch("https://jsonplaceholder.typicode.com/comments");
 
   const data = await response.json();
-  console.log(data);
 
   elPostList.addEventListener("click", (evt) => {
     if (evt.target.matches(".post-comment-btn")) {
